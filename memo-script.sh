@@ -1,12 +1,19 @@
 #!/bin/bash
 
+# Option text
 opt=$1
+
+# Text passed in after option; not using currently for -a option
 #text=$2
 text="${@:2}"
 
+# File where txt of memos is found
 file='/Users/britta/Desktop/memo-program/memos.txt'
+
+# Text the user wants placed in front of their notes
 preface='Reminders'
 
+# Earlier way to display memo text; discard
 # cat -n /Users/britta/Desktop/memo-program/memos.txt
 
 
@@ -17,16 +24,25 @@ if
   [ "$opt" = -a -o "$opt" = add ]
 then
   read -p "Add note: " newNote
-  echo $newNote >> $file
-  echo "HERE'S YOUR NEW TEXT"
-  sed -n '/^[^#]/ p' $file | wc -l |
   
-  echo "END OF TEST"
+# Get only the lines not starting with # and add a new note to the bottom
+  insertLine=$(cat -n memos.txt | grep '^\s\s\s\s\s\d\d*\s[^#]' | tail -1 | cut -f 1)
+  echo $insertLine
+  sed -i '' "${insertLine}a\\
+${newNote}
+" $file
 fi
 
-# Get all the lines not starting with #
-# Insert new note at line after last one
+### If the -d <num> option is used, comment out that line ###
 
+if 
+ [ "$opt" = -d -o "$opt" = "del" ]
+then
+  read -p "Delete which line? " lineToDel
+  sed -i '' "${lineToDel}s/^/# /" $file
+ # sed -i '' $text
+
+fi
 
 
 
@@ -34,19 +50,5 @@ fi
 ### Output text of memo that is not commented with a # symbol ###
 
 echo %B${preface}:%b
-grep '^[^#]' /Users/britta/Desktop/memo-program/memos.txt
+grep -n '^[^#]' /Users/britta/Desktop/memo-program/memos.txt
 echo __________
-
-
-
-
-### If the -d <num> option is used, comment out that line ###
-
-#if 
-# [ $opt = -d ]
-#then
-#  echo d option used
-#  sed -i 's/^/# /' $file
-#  sed -i $text
-
-#fi
