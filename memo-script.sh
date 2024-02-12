@@ -1,23 +1,23 @@
 #!/bin/bash
 
+### VARIABLES
+
 # Option text
 opt=$1
 
-# Text passed in after option; not using currently for -a option
-#text=$2
-text="${@:2}"
+# Argument text
+arg=$2
 
-# File where txt of memos is found
+
+# File where text of memos is found
 file='/Users/britta/Desktop/memo-program/memos.txt'
 
 # Text the user wants placed in front of their notes
 preface='Reminders'
 
-# Earlier way to display memo text; discard
-# cat -n /Users/britta/Desktop/memo-program/memos.txt
 
 
-
+### ADDING NOTES
 ### If the -a or add options are used, add new text to the note. 
 
 if 
@@ -32,16 +32,26 @@ ${newNote}
 " $file
 fi
 
-### If the -d <num> option is used, comment out that line ###
+
+
+### DELETING NOTES
+### If the -d option is used, comment out a line ###
 
 if 
  [ "$opt" = -d -o "$opt" = "del" ]
 then
-  read -p "Delete which line? " lineToDel
-  sed -i '' -e "${lineToDel}s/^/# /" -e "${lineToDel}h" -e "${lineToDel}d" -e '$G' -e '$a\
+  if 
+    [ -n "$arg" ]
+  then
+ 	lineToDel=$arg
+  else 	
+    read -p "Delete which line? " lineToDel
+  fi 
+    sed -i '' -e "${lineToDel}s/^/# /" -e "${lineToDel}h" -e "${lineToDel}d" -e '$G' -e '$a\
 #' $file
 fi
 
+### If the -c or clear option is used, permanently remove all notes
 if 
   [ "$opt" = -c -o "$opt" = "clear" ]
 then
@@ -72,7 +82,7 @@ fi
 
 
 
-
+### FINAL OUTPUT
 ### Output text of memo that is not commented with a # symbol ###
 
 echo %B${preface}:%b
