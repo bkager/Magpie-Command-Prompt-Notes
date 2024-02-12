@@ -26,7 +26,8 @@ then
   if
     [ -n "$arg" ]
   then
-    newNote=$arg
+    shift 1
+    newNote=$@
   else
     read -p "Add note: " newNote
   fi
@@ -43,18 +44,50 @@ fi
 ### DELETING NOTES
 ### If the -d option is used, comment out a line ###
 
+### FLOW of this: 
+# If there is no arg, get an arg
+# Process the received arg into 1-2 variables
+# If there is only one arg, delete that line
+# If there is a second arg, delete a range of lines 
+
+
+
 if 
  [ "$opt" = -d -o "$opt" = "del" ]
+
+ 
 then
-  if 
-    [ -n "$arg" ]
+
+  if
+    #there is no arg
+    [ -z "$arg" ]
   then
- 	lineToDel=$arg
-  else 	
-    read -p "Delete which line? " lineToDel
-  fi 
-    sed -i '' -e "${lineToDel}s/^/# /" -e "${lineToDel}h" -e "${lineToDel}d" -e '$G' -e '$a\
+    #read in arg
+    read -p "Delete which line? " arg
+  fi
+
+  # You now have an arg whether one was originally passed in or not. 
+  # Process the arg into variables.
+  
+  num1=$( echo $arg | cut -d'-' -f1 )
+  num2=$( echo $arg | cut -d'-' -f2 )
+
+  if
+    #there is a second var
+    [ -n "$num2" ]
+  then
+    #delete a range of lines
+    sed -i '' -e "${num1},${num2}s/^/# /" -e "${num1},${num2}h" -e "${num1},${num2}d" -e '$G' -e '$a\
+#' $file    
+  else
+    #delete the one line
+    sed -i '' -e "${num1}s/^/# /" -e "${num1}h" -e "${num1}d" -e '$G' -e '$a\
 #' $file
+  fi
+
+
+
+  
 exit 0
 fi
 
@@ -76,9 +109,10 @@ then
 ### Lines preceded with # will not be printed ###
 #" > $file
   fi
+  exit 0
 fi
 
-### If number is passed in with -d or del arg, delete that line without read dialogue
+
 ### If some text is passed in with -d or del arg, match it to line texts and delete that line with either read dialogue or without
 ### Allow users to delete all notes with arg: clear all
 
@@ -89,7 +123,7 @@ fi
 ### line numbers
 ### If backup file is created
 
-
+### Add help function: invoke with args help, usage, -h, -u
 
 
 
@@ -99,6 +133,6 @@ fi
 ### Output text of memo that is not commented with a # symbol ###
 
 echo %B${preface}:%b
-grep '^[^#]' /Users/britta/Desktop/memo-program/memos.txt
+grep -n '^[^#]' /Users/britta/Desktop/memo-program/memos.txt
 echo __________
 exit 0
