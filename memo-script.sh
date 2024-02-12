@@ -23,13 +23,19 @@ preface='Reminders'
 if 
   [ "$opt" = -a -o "$opt" = add ]
 then
-  read -p "Add note: " newNote
+  if
+    [ -n "$arg" ]
+  then
+    newNote=$arg
+  else
+    read -p "Add note: " newNote
+  fi
 # Get only the lines not starting with # and add a new note to the bottom
-  insertLine=$(cat -n memos.txt | grep '^\s\s\s\s\s\d\d*\s[^#]' | tail -1 | cut -f 1)
-  echo $insertLine
-  sed -i '' "${insertLine}a\\
+insertLine=$(cat -n memos.txt | grep '^\s\s\s\s\s\d\d*\s[^#]' | tail -1 | cut -f 1)
+sed -i '' "${insertLine}a\\
 ${newNote}
 " $file
+exit 0
 fi
 
 
@@ -49,7 +55,14 @@ then
   fi 
     sed -i '' -e "${lineToDel}s/^/# /" -e "${lineToDel}h" -e "${lineToDel}d" -e '$G' -e '$a\
 #' $file
+exit 0
 fi
+
+
+
+
+
+
 
 ### If the -c or clear option is used, permanently remove all notes
 if 
@@ -88,3 +101,4 @@ fi
 echo %B${preface}:%b
 grep '^[^#]' /Users/britta/Desktop/memo-program/memos.txt
 echo __________
+exit 0
