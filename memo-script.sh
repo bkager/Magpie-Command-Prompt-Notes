@@ -2,25 +2,20 @@
 
 ### VARIABLES
 
-# Option text
-opt=$1
+# Command text
+command=$1
 
 # Argument text
 arg=$2
 
-
-# File where text of memos is found
+# Location of text file
 file='/Users/britta/Desktop/memo-program/memos.txt'
 
-# Text the user wants placed in front of their notes
-preface='Reminders'
-export preface
-
 ### VIEWING NOTES
-### The program outputs all non-commented notes by default. This option outputs the contents of the entire notes file, including "deleted" (commented out) ntoes
+### The program outputs all non-commented notes by default. The "memo all" command outputs the contents of the entire notes file, including "deleted" (commented out) ntoes
 
 if
-  [ "$opt" = all ]
+  [ "$command" = all ]
 then
  echo "All notes:
  "
@@ -30,84 +25,89 @@ fi
 
 
 ### ADDING NOTES
-### If the -a or add options are used, add new text to the note. 
+### If the a or add commands are used, add new text to the note. 
 
 if 
-  [ "$opt" = -a -o "$opt" = add ]
+  [ "$command" = a -o "$command" = add ]
+  
 then
   if
+  	#an argument is given at $2 when the script is run
     [ -n "$arg" ]
   then
+  	#the new note text includes everything typed after the "add" command
     shift 1
     newNote=$@
   else
+  	#if new note text was not supplied as an argument, open a read prompt to capture it
     read -p "Add note: " newNote
   fi
-# Get only the lines not starting with # and add a new note to the bottom
-insertLine=$(cat -n memos.txt | grep '^\s\s\s\s\s\d\d*\s[^#]' | tail -1 | cut -f1)
+  
+# Find the line number of the last line not starting with #, and save it in variable $insertLine. A new note will be inserted on the line after this number. If there are no lines that do not start with #, a new note will be inserted at line 1.  
+insertLine=$(cat -n $file | grep '^\s\s\s\s\s\d\d*\s[^#]' | tail -1 | cut -f1)
 insertLine=${insertLine:-1}
+
   if
+    #If there were no uncommented lines (current notes),
     [ "$insertLine" = 1 ]
   then
+    #insert the new note at line 1
     sed -i '' "1i\\
 ${newNote}
 " $file
   else
+    #If there were already uncommented lines (current notes), add the new note on the line below the last one
     sed -i '' "${insertLine}a\\
 ${newNote}
 " $file
   fi
-
-
-exit 0
+  exit 0
 fi
 
 
-
 ### DELETING NOTES
-### If the -d/del/delete option is used, comment out a line ###
+### If the d/del/delete commands are used, comment out a line ###
 
 if 
- [ "$opt" = -d -o "$opt" = "del" -o "$opt" = "delete" ]
+ [ "$command" = d -o "$command" = "del" -o "$command" = "delete" ]
 then
   if
-    #there is no arg
+    #If line number(s) to delete were not supplied as an argument when the script was run,
     [ -z "$arg" ]
   then
-    #read in arg
-    read -p "Delete which line? " arg
+    #read in line number(s)
+    read -p 'Delete which line(s)? ' arg
   fi
 
-  # You now have an arg whether one was originally passed in or not. 
-  # Process the arg into variables.
+  # Process the line number(s) into separate variables. The only/first number supplied is named $num1; if a range of numbers was given, the second number is named $num2.
   
   num1=$( echo $arg | cut -d'-' -f1 )
   num2=$( echo $arg | cut -d'-' -f2 )
 
   if
-    #there is a second var
+    #If a range of numbers was given (and so $num2 exists), 
     [ -n "$num2" ]
   then
-    #delete a range of lines
+    #delete the range of lines from $num1 to $num2
     sed -i '' -e "${num1},${num2}s/^/# /" -e "${num1},${num2}h" -e "${num1},${num2}d" -e '$G' -e '$a\
 #' $file    
   else
-    #delete the one line
+    #If only one line number was given, delete the line at $num1
     sed -i '' -e "${num1}s/^/# /" -e "${num1}h" -e "${num1}d" -e '$G' -e '$a\
 #' $file
   fi
-  # Exit script
   exit 0
 fi
 
 ### DELETING ALL NOTES
-### If the -c/clear option is used, permanently remove all notes
+### If the c/clear commands are used, permanently remove all notes. Unlike the "delete" command, this does not save notes as comments at the bottom of the file.
 if 
-  [ "$opt" = -c -o "$opt" = "clear" ]
+  [ "$command" = c -o "$command" = "clear" ]
 then
-  read -p "Fully delete all notes? " deleteConf
+  # Open confirmation dialogue
+  read -p "Fully delete all notes and reset note file?  " delete_conf
   if 
-    [ "$deleteConf" = y -o "$deleteConf" = Y -o "$deleteConf" = yes -o "$deleteConf" = Yes ]
+    [ "$delete_conf" = y -o "$delete_conf" = Y -o "$delete_conf" = yes -o "$delete_conf" = Yes ]
   then 
     echo "
 ### Lines preceded with # will not be printed ###
@@ -119,9 +119,9 @@ fi
 
 
 ### HELP FUNCTION
-### If the  help/usage/h/u options are used, print usage info
+### If the  help/usage/h/u commands are used, print usage info
 
-if [ "$opt" = -h -o "$opt" = "help" -o "$opt" = "clear" ]
+if [ "$command" = -h -o "$command" = "help" -o "$command" = "clear" ]
 then
   echo "
 ***MEMO: USAGE NOTES***
@@ -148,7 +148,7 @@ memo del/-d <n | n-z>		: Delete a note. Follow the command
    memo del 2-4			  delete. If no number is given, a 
 				  prompt will ask you to enter 
 				  line numbers. Please note that the 
-				  delete option does not actually 
+				  delete command does not actually 
 				  delete text, but instead moves it 
 				  to the end of the text as a 
 				  comment. You can see notes you 
@@ -170,8 +170,8 @@ fi
 
 ### FINAL OUTPUT
 ### Output text of all notes not commented with a # symbol ###
+### This text will display if the "memo" command is used with no sub-commands; this is also what will show in the prompt. 
 
-#echo %B${preface}:%b
 grep -n '^[^#]' /Users/britta/Desktop/memo-program/memos.txt
 echo __________
 exit 0
