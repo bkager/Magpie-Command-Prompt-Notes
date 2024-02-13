@@ -44,10 +44,21 @@ then
     read -p "Add note: " newNote
   fi
 # Get only the lines not starting with # and add a new note to the bottom
-insertLine=$(cat -n memos.txt | grep '^\s\s\s\s\s\d\d*\s[^#]' | tail -1 | cut -f 1)
-sed -i '' "${insertLine}a\\
+insertLine=$(cat -n memos.txt | grep '^\s\s\s\s\s\d\d*\s[^#]' | tail -1 | cut -f1)
+insertLine=${insertLine:-1}
+  if
+    [ "$insertLine" = 1 ]
+  then
+    sed -i '' "1i\\
 ${newNote}
 " $file
+  else
+    sed -i '' "${insertLine}a\\
+${newNote}
+" $file
+  fi
+
+
 exit 0
 fi
 
