@@ -11,6 +11,7 @@ arg=$2
 # Location of text file
 file='/Users/britta/Desktop/memo-program/memos.txt'
 
+
 ### VIEWING NOTES
 ### The program outputs all non-commented notes by default. The "memo all" command outputs the contents of the entire notes file, including "deleted" (commented out) ntoes
 
@@ -65,7 +66,7 @@ ${newNote}
 fi
 
 
-### DELETING NOTES
+### DELETING SPECIFIC NOTES
 ### If the d/del/delete commands are used, comment out a line ###
 
 if 
@@ -99,6 +100,7 @@ then
   exit 0
 fi
 
+
 ### DELETING ALL NOTES
 ### If the c/clear commands are used, permanently remove all notes. Unlike the "delete" command, this does not save notes as comments at the bottom of the file.
 if 
@@ -115,7 +117,6 @@ then
   fi
   exit 0
 fi
-
 
 
 ### HELP FUNCTION
@@ -172,6 +173,6 @@ fi
 ### Output text of all notes not commented with a # symbol ###
 ### This text will display if the "memo" command is used with no sub-commands; this is also what will show in the prompt. 
 
-grep -n '^[^#]' /Users/britta/Desktop/memo-program/memos.txt
+grep -n '^[^#]' $file
 echo __________
 exit 0
