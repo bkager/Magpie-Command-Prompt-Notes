@@ -14,7 +14,19 @@ file='/Users/britta/Desktop/memo-program/memos.txt'
 
 # Text the user wants placed in front of their notes
 preface='Reminders'
+export preface
 
+### VIEWING NOTES
+### The program outputs all non-commented notes by default. This option outputs the contents of the entire notes file, including "deleted" (commented out) ntoes
+
+if
+  [ "$opt" = all ]
+then
+ echo "All notes:
+ "
+ cat -n $file
+ exit 0
+fi
 
 
 ### ADDING NOTES
@@ -42,22 +54,11 @@ fi
 
 
 ### DELETING NOTES
-### If the -d option is used, comment out a line ###
-
-### FLOW of this: 
-# If there is no arg, get an arg
-# Process the received arg into 1-2 variables
-# If there is only one arg, delete that line
-# If there is a second arg, delete a range of lines 
-
-
+### If the -d/del/delete option is used, comment out a line ###
 
 if 
- [ "$opt" = -d -o "$opt" = "del" ]
-
- 
+ [ "$opt" = -d -o "$opt" = "del" -o "$opt" = "delete" ]
 then
-
   if
     #there is no arg
     [ -z "$arg" ]
@@ -84,26 +85,18 @@ then
     sed -i '' -e "${num1}s/^/# /" -e "${num1}h" -e "${num1}d" -e '$G' -e '$a\
 #' $file
   fi
-
-
-
-  
-exit 0
+  # Exit script
+  exit 0
 fi
 
-
-
-
-
-
-
-### If the -c or clear option is used, permanently remove all notes
+### DELETING ALL NOTES
+### If the -c/clear option is used, permanently remove all notes
 if 
   [ "$opt" = -c -o "$opt" = "clear" ]
 then
   read -p "Fully delete all notes? " deleteConf
   if 
-    [ "$deleteConf" = yes -o "$deleteConf" = y -o "$deleteConf" = Y ]
+    [ "$deleteConf" = y -o "$deleteConf" = Y -o "$deleteConf" = yes -o "$deleteConf" = Yes ]
   then 
     echo "
 ### Lines preceded with # will not be printed ###
@@ -113,26 +106,61 @@ then
 fi
 
 
-### If some text is passed in with -d or del arg, match it to line texts and delete that line with either read dialogue or without
-### Allow users to delete all notes with arg: clear all
 
+### HELP FUNCTION
+### If the  help/usage/h/u options are used, print usage info
 
-### If -o or option arg is used, open option menu to change: 
-### Preface on/of
-### What preface is
-### line numbers
-### If backup file is created
+if [ "$opt" = -h -o "$opt" = "help" -o "$opt" = "clear" ]
+then
+  echo "
+***MEMO: USAGE NOTES***
 
-### Add help function: invoke with args help, usage, -h, -u
+Pattern: memo command <optional arguments>
 
+memo 				: Output contents of notes.
 
+memo all			: Output contents of all notes, including 
+				  \"deleted\" (commented out) notes.
+				  
+memo help/usage/-h/-u 		: Display this help text.
 
+memo add/-a <'note'> 		: Add a new note. Follow the command
+   memo add		  	  with a string in quotes to enter
+   memo add \"Get milk\"		  it as a new note. If no argument
+	   			  is given, a prompt will ask you 
+	   	  		  to enter text.   	
+	  	   	
+   	
+memo del/-d <n | n-z>		: Delete a note. Follow the command 
+   memo del			  with a line number or a range of 
+   memo del 4			  line numbers separated by a - to 
+   memo del 2-4			  delete. If no number is given, a 
+				  prompt will ask you to enter 
+				  line numbers. Please note that the 
+				  delete option does not actually 
+				  delete text, but instead moves it 
+				  to the end of the text as a 
+				  comment. You can see notes you 
+				  have deleted by opening the memo.txt 
+				  file in an editor or with the memo all 
+				  command.  
+
+memo clear/-c 			: Permanently delete all notes and 
+   memo clear			  return memo file to a pristine state. 
+				  Unlike the delete function, this does not 
+				  save notes as comments. A confirmation 
+				  dialogue will open. Reply y/Y/yes/Yes 
+				  to clear all notes. 
+	 
+"
+  exit 0
+fi
 
 
 ### FINAL OUTPUT
-### Output text of memo that is not commented with a # symbol ###
+### Output text of all notes not commented with a # symbol ###
 
-echo %B${preface}:%b
+#echo %B${preface}:%b
 grep -n '^[^#]' /Users/britta/Desktop/memo-program/memos.txt
 echo __________
 exit 0
