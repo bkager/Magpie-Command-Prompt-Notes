@@ -13,7 +13,7 @@ file='/Users/britta/Desktop/memo-program/memos.txt'
 
 
 ### VIEWING NOTES
-### The program outputs all non-commented notes by default. The "memo all" command outputs the contents of the entire notes file, including "deleted" (commented out) ntoes
+### The program outputs all non-commented notes by default. The "magpie all" command outputs the contents of the entire notes file, including "deleted" (commented out) ntoes
 
 if
   [ "$command" = all ]
@@ -45,7 +45,7 @@ then
   fi
   
 # Find the line number of the last line not starting with #, and save it in variable $insertLine. A new note will be inserted on the line after this number. If there are no lines that do not start with #, a new note will be inserted at line 1.  
-insertLine=$(cat -n $file | grep '^\s\s\s\s\s\d\d*\s[^#]' | tail -1 | cut -f1)
+insertLine=$(cat -n $file | grep '^\s*\d\d*\s[^#]' | tail -1 | cut -f1)
 insertLine=${insertLine:-1}
 
   if
@@ -58,6 +58,7 @@ ${newNote}
 " $file
   else
     #If there were already uncommented lines (current notes), add the new note on the line below the last one
+	echo $insertLine
     sed -i '' "${insertLine}a\\
 ${newNote}
 " $file
@@ -125,40 +126,40 @@ fi
 if [ "$command" = -h -o "$command" = "help" -o "$command" = "clear" ]
 then
   echo "
-***MEMO: USAGE NOTES***
+***MAGPIE: USAGE NOTES***
 
-Pattern: memo command <optional arguments>
+Pattern: magpie command <optional arguments>
 
-memo 				: Output contents of notes.
+magpie 				: Output contents of notes.
 
-memo all			: Output contents of all notes, including 
+magpie all			: Output contents of all notes, including 
 				  \"deleted\" (commented out) notes.
 				  
-memo help/usage/-h/-u 		: Display this help text.
+magpie help/usage/-h/-u 	: Display this help text.
 
-memo add/-a <'note'> 		: Add a new note. Follow the command
-   memo add		  	  with a string in quotes to enter
-   memo add \"Get milk\"		  it as a new note. If no argument
+magpie add/-a <'note'> 		: Add a new note. Follow the command
+   magpie add		  	  with a string in quotes to enter
+   magpie add \"Get milk\"	  it as a new note. If no argument
 	   			  is given, a prompt will ask you 
 	   	  		  to enter text.   	
 	  	   	
    	
-memo del/-d <n | n-z>		: Delete a note. Follow the command 
-   memo del			  with a line number or a range of 
-   memo del 4			  line numbers separated by a - to 
-   memo del 2-4			  delete. If no number is given, a 
+magpie del/-d <n | n-z>		: Delete a note. Follow the command 
+   magpie del			  with a line number or a range of 
+   magpie del 4			  line numbers separated by a - to 
+   magpie del 2-4		  delete. If no number is given, a 
 				  prompt will ask you to enter 
 				  line numbers. Please note that the 
 				  delete command does not actually 
 				  delete text, but instead moves it 
 				  to the end of the text as a 
 				  comment. You can see notes you 
-				  have deleted by opening the memo.txt 
-				  file in an editor or with the memo all 
+				  have deleted by opening the magpie.txt 
+				  file in an editor or with the magpie all 
 				  command.  
 
-memo clear/-c 			: Permanently delete all notes and 
-   memo clear			  return memo file to a pristine state. 
+magpie clear/-c 		: Permanently delete all notes and 
+   magpie clear			  return magpie file to a pristine state. 
 				  Unlike the delete function, this does not 
 				  save notes as comments. A confirmation 
 				  dialogue will open. Reply y/Y/yes/Yes 
@@ -171,7 +172,7 @@ fi
 
 ### FINAL OUTPUT
 ### Output text of all notes not commented with a # symbol ###
-### This text will display if the "memo" command is used with no sub-commands; this is also what will show in the prompt. 
+### This text will display if the "magpie" command is used with no sub-commands; this is also what will show in the prompt. 
 
 grep -n '^[^#]' $file
 echo __________
