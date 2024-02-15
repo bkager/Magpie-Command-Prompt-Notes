@@ -67,11 +67,11 @@ You can also delete a range: **magpie del 3-5**
 
 ![image](https://github.com/bkager/Magpie/assets/68086185/bbd8170d-ae57-4291-acca-df9df6dd2901)
 
-"Deleted" notes aren't actually lost--they're moved to the bottom of the file as a comment. You can see all current and deleted notes by opening the notes file in a text editor or by typing **magpie all**: 
+"Deleted" notes aren't fully gone--they're moved to the bottom of the file as a comment. You can see all current and deleted notes by opening the notes file in a text editor or by typing **magpie all**: 
 
 ![image](https://github.com/bkager/Magpie/assets/68086185/c13622f0-b502-4831-a82d-c2e11715b217)
 
-To get rid of all your old notes, open the file in a text editor. Of if you want to entirely clear your file of all current and deleted notes, type **magpie clear**: 
+To get rid of all your old notes, open the file in a text editor. Or if you want to entirely clear your file of all current and deleted notes and start over, type **magpie clear**: 
 
 ![image](https://github.com/bkager/Magpie/assets/68086185/b4366602-5be7-4930-a4fc-832928500665)
 
