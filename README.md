@@ -58,24 +58,24 @@ From the command line, type chmod +x \<path to your magpie-notes.sh file> to giv
 To add a note, type **magpie add "I'm a new note!"**
 
 ![image](https://github.com/bkager/Magpie/assets/68086185/141f2cab-7bf9-4978-a073-958c0f903823)
+![image](https://github.com/bkager/Magpie/assets/68086185/58a06b9e-86ef-4ec4-b4a5-4c958766222b)
 
 To delete a note, type **magpie del \<line num>**:
-```
-GIF of note deleted
-```
+
+![image](https://github.com/bkager/Magpie/assets/68086185/a8618f62-675a-4d0a-83d2-6928905d7be2)
+
 You can also delete a range: **magpie del 3-5**
-```
-GIF of note with range deleted
-```
+![image](https://github.com/bkager/Magpie/assets/68086185/bbd8170d-ae57-4291-acca-df9df6dd2901)
+
 "Deleted" notes aren't actually lost--they're moved to the bottom of the file as a comment. You can see all current and deleted notes by opening the notes file in a text editor or by typing **magpie all**: 
-```
-SCREENSHOT of all notes being shown
-```
+
+![image](https://github.com/bkager/Magpie/assets/68086185/c13622f0-b502-4831-a82d-c2e11715b217)
+
 To get rid of all your old notes, open the file in a text editor. Of if you want to entirely clear your file of all current and deleted notes, type **magpie clear**: 
-```
-GIF of note added
-```
+
+![image](https://github.com/bkager/Magpie/assets/68086185/b4366602-5be7-4930-a4fc-832928500665)
+
 To see a quick summary of usage, including abbreviated forms of these commands, type **magpie help**. 
-```
-GIF of note added
-```
+
+![image](https://github.com/bkager/Magpie/assets/68086185/a699f4c6-55c3-433a-8b5e-c93dc43e2f84)
+
