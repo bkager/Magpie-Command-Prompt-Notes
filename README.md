@@ -19,7 +19,7 @@ To use Magpie, download the script file (magpie-notes.sh) and the text file in w
 Open your copy of magpie-notes.sh. On line 12, add the path to the location where you saved magpie-notes.txt: 
 ```
 # Location of text file
-file='/Users/britta/Desktop/magpie-notes.txt'
+file='/Users/myname/Desktop/magpie-notes.txt'
 ```
 
 ## Setup 3: Configure Your Prompt
@@ -47,7 +47,7 @@ NEWLINE=$'\n'
 
 PS1='%d (%D{%A, %B %e})${NEWLINE}`magpie`'
 
-alias magpie="/Users/britta/Desktop/magpie/magpie-notes-script.sh"
+alias magpie="/Users/myname/Desktop/magpie/magpie-notes-script.sh"
 ```
 ## Setup 4: Permissions
 
