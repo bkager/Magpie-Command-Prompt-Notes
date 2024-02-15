@@ -1,4 +1,4 @@
-
+Welcome to Magpie! See the Github repo for usage help, or type "magpie help".
 
 ### Lines preceded with # will not be printed ###
 #
