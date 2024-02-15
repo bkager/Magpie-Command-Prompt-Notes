@@ -4,6 +4,8 @@ Magpie is a shell script which displays small snippets of text in your shell pro
 ~~~
 SCREENSHOT of some notes
 ~~~
+![image](https://github.com/bkager/Magpie/assets/68086185/6a1384d7-f057-4599-8185-242479fa4ef8)
+
 You can add or delete notes from the command line while you work, or you can open the notes file in a text editor to perform more complex editing. Your notes will refresh every time your prompt does.
 ~~~
 GIF of note being added and deleted. 
