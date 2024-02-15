@@ -1,21 +1,15 @@
 # Magpie Notes
 
 Magpie is a shell script which displays small snippets of text in your shell prompt. It's useful for reminders or keeping brief notes while you work.
-~~~
-SCREENSHOT of some notes
-~~~
-![image](https://github.com/bkager/Magpie/assets/68086185/6a1384d7-f057-4599-8185-242479fa4ef8)
-![image](https://github.com/bkager/Magpie/assets/68086185/ef492327-8f13-4493-87ae-52296a2b24fc)
+
 ![image](https://github.com/bkager/Magpie/assets/68086185/2c4906dd-d8ab-4616-b4f5-698251682f10)
-![image](https://github.com/bkager/Magpie/assets/68086185/bcc938e3-5d44-492d-bf93-00cda08c8b7f)
-
-
-
 
 You can add or delete notes from the command line while you work, or you can open the notes file in a text editor to perform more complex editing. Your notes will refresh every time your prompt does.
 ~~~
 GIF of note being added and deleted. 
 ~~~
+![image](https://github.com/bkager/Magpie/assets/68086185/7cab2546-a129-4b4b-9e7b-a7f1325fe50a)
+
 ~~~
 GIF of note being edited elsewhere and the prompt updating. 
 ~~~
