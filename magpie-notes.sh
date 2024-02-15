@@ -133,16 +133,16 @@ magpie 				: Output contents of notes.
 magpie all			: Output contents of all notes, including 
 				  \"deleted\" (commented out) notes.
 				  
-magpie help/usage/-h/-u 	: Display this help text.
+magpie help/usage/h/u 	: Display this help text.
 
-magpie add/-a <'note'> 		: Add a new note. Follow the command
+magpie add/a <'note'> 		: Add a new note. Follow the command
    magpie add		  	  with a string in quotes to enter
    magpie add \"Get milk\"	  it as a new note. If no argument
 	   			  is given, a prompt will ask you 
 	   	  		  to enter text.   	
 	  	   	
    	
-magpie del/-d <n | n-z>		: Delete a note. Follow the command 
+magpie del/d <n | n-z>		: Delete a note. Follow the command 
    magpie del			  with a line number or a range of 
    magpie del 4			  line numbers separated by a - to 
    magpie del 2-4		  delete. If no number is given, a 
@@ -156,7 +156,7 @@ magpie del/-d <n | n-z>		: Delete a note. Follow the command
 				  file in an editor or with the magpie all 
 				  command.  
 
-magpie clear/-c 		: Permanently delete all notes and 
+magpie clear/c 		: Permanently delete all notes and 
    magpie clear			  return magpie file to a pristine state. 
 				  Unlike the delete function, this does not 
 				  save notes as comments. A confirmation 
