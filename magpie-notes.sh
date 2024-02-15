@@ -58,7 +58,6 @@ ${newNote}
 " $file
   else
     #If there were already uncommented lines (current notes), add the new note on the line below the last one
-	echo $insertLine
     sed -i '' "${insertLine}a\\
 ${newNote}
 " $file
@@ -91,8 +90,7 @@ then
     [ -n "$num2" ]
   then
     #delete the range of lines from $num1 to $num2
-    sed -i '' -e "${num1},${num2}s/^/# /" -e "${num1},${num2}h" -e "${num1},${num2}d" -e '$G' -e '$a\
-#' $file    
+    sed -i '' -e "${num1},${num2}s/^/# /" -e "${num1},${num2}s/$/\n#/" -e "${num1},${num2}H" -e "${num1},${num2}d" -e '$G' $file    
   else
     #If only one line number was given, delete the line at $num1
     sed -i '' -e "${num1}s/^/# /" -e "${num1}h" -e "${num1}d" -e '$G' -e '$a\

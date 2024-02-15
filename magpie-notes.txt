@@ -1,18 +1,5 @@
-Change variable names
-Where to insert a note if the first line is commented out?
-Let notes be inserted at particular line
-Update project page and add plans for future features
-highlight note function
-Add installer
-
 
 
 ### Lines preceded with # will not be printed ###
 #
-#
-# Giragge
-#
-# aldskfjlsdkjf
-#
-# search function
 #
