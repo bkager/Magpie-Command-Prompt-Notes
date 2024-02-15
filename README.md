@@ -77,6 +77,5 @@ To get rid of all your old notes, open the file in a text editor. Or if you want
 
 To see a quick summary of usage, including abbreviated forms of these commands, type **magpie help**. 
 
-![image](https://github.com/bkager/Magpie/assets/68086185/e4e39a37-75bd-400c-a5e5-91952d49a1c4)
-
+![image](https://github.com/bkager/Magpie/assets/68086185/90ed2270-5086-4f45-9c1d-e6bdd009b696)
 
