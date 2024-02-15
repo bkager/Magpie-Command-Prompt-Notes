@@ -4,16 +4,9 @@ Magpie is a shell script which displays small snippets of text in your shell pro
 
 ![image](https://github.com/bkager/Magpie/assets/68086185/089fff15-35b9-426c-9ee1-292109ea8747)
 
-
 Add or delete notes from the command line while you work, or open the notes file in a text editor to perform more complex editing. Your notes will refresh every time your prompt does.
-~~~
-GIF of note being added and deleted. 
-~~~
-![image](https://github.com/bkager/Magpie/assets/68086185/7cab2546-a129-4b4b-9e7b-a7f1325fe50a)
 
-~~~
-GIF of note being edited elsewhere and the prompt updating. 
-~~~
+![image](https://github.com/bkager/Magpie/assets/68086185/7cab2546-a129-4b4b-9e7b-a7f1325fe50a)
 
 Magpie is compatible with **bash/zsh** shells.
 
@@ -23,12 +16,7 @@ To use Magpie, download the script file (magpie-notes.sh) and the text file in w
 
 ## Setup 2: Configure Your Script File
 
-Open your copy of magpie-notes.sh. On line 12, you'll see: 
-```
-# Location of text file
-file='ABSOLUTE PATH TO YOUR NOTES FILE HERE'
-```
-Add the path to the location where you stored magpie-notes.txt: 
+Open your copy of magpie-notes.sh. On line 12, add the path to the location where you saved magpie-notes.txt: 
 ```
 # Location of text file
 file='/Users/britta/Desktop/magpie-notes.txt'
@@ -68,9 +56,9 @@ From the command line, type chmod +x \<path to your magpie-notes.sh file> to giv
 # Usage
 
 To add a note, type **magpie add "I'm a new note!"**
-```
-GIF of note added
-```
+
+![image](https://github.com/bkager/Magpie/assets/68086185/141f2cab-7bf9-4978-a073-958c0f903823)
+
 To delete a note, type **magpie del \<line num>**:
 ```
 GIF of note deleted
