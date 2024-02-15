@@ -55,7 +55,7 @@ From the command line, type chmod +x \<path to your magpie-notes.sh file> to giv
 
 # Usage
 
-To add a note, type **magpie add "I'm a new note!"**
+To add a note, type **magpie add "Whatever you want to type"**
 
 ![image](https://github.com/bkager/Magpie/assets/68086185/58a06b9e-86ef-4ec4-b4a5-4c958766222b)
 
