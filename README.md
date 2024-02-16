@@ -24,7 +24,25 @@ file='/Users/myname/Desktop/magpie-notes.txt'
 
 ## Setup 3: Configure Your Prompt
 
-**####### ADD BASH SECTION IF DIFFERENT #########**
+### Bash Setup
+Place the following line in your shell's config file (**.bashrc**), adding the path to your copy of magpie-notes.sh:
+```
+  alias magpie="ABSOLUTE_PATH_TO_THE_SCRIPTFILE"
+```
+Add to end of PS1 value in **.bashrc** file: 
+```
+  "\n$(magpie)\n"
+```
+
+Example .bashrc file: 
+```
+alias magpie="/Users/myname/Desktop/magpie/magpie-notes-script.sh"
+
+PS1='\n\u@\w \d \T\n"$(magpie)"\n'
+```
+Note the double quotes!
+
+Also make sure you have ```source ~/.bashrc``` somewhere in your .bash_profile. 
 
 ### Zsh Setup
 
