@@ -1,4 +1,4 @@
-# Magpie Notes
+# Magpie: Notes in the command prompt
 
 Magpie is a shell script which displays small snippets of text in your shell prompt. It's useful for reminders or keeping brief notes while you work.
 
