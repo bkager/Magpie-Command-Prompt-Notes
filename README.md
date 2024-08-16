@@ -40,7 +40,7 @@ alias magpie="/Users/myname/Desktop/magpie/magpie-notes-script.sh"
 
 PS1='\n\u@\w \d \T\n"$(magpie)"\n'
 ```
-Note the double quotes!
+Note that you need to include the double quotes!
 
 Also make sure you have ```source ~/.bashrc``` somewhere in your .bash_profile. 
 
