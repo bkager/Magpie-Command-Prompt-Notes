@@ -69,7 +69,10 @@ alias magpie="/Users/myname/Desktop/magpie/magpie-notes-script.sh"
 ```
 ## Setup 4: Permissions
 
-From the command line, type chmod +x \<path to your magpie-notes.sh file> to give the script permission to execute. 
+From the command line, type this to give the script permission to execute:
+```
+chmod +x \<PATH TO YOUR MAGPIE-NOTES.SH FILE>
+```
 
 # Usage
 
