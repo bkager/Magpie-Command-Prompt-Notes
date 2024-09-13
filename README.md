@@ -1,6 +1,6 @@
 # Magpie: Notes in the command prompt
 
-Magpie is a shell script which displays small snippets of text in your shell prompt. It's useful for reminders or keeping brief notes while you work.
+Magpie is a shell script compatible with **bash/zsh** which displays small snippets of text in your shell prompt. It's useful for reminders or keeping brief notes while you work.
 
 ![image](https://github.com/bkager/Magpie/assets/68086185/089fff15-35b9-426c-9ee1-292109ea8747)
 
@@ -8,7 +8,6 @@ Add or delete notes from the command line while you work, or open the notes file
 
 ![image](https://github.com/bkager/Magpie/assets/68086185/7cab2546-a129-4b4b-9e7b-a7f1325fe50a)
 
-Magpie is compatible with **bash/zsh** shells.
 
 ## Setup 1: Files
 
