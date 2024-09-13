@@ -77,25 +77,25 @@ chmod +x \<PATH TO YOUR MAGPIE-NOTES.SH FILE>
 
 To add a note, type **magpie add "Whatever you want to type"**
 
-![image](https://github.com/bkager/Magpie/assets/68086185/58a06b9e-86ef-4ec4-b4a5-4c958766222b)
+![Screenshot showing the user type "magpie add "Add license". It is added to the command prompt as a new line.](https://github.com/bkager/Magpie/assets/68086185/58a06b9e-86ef-4ec4-b4a5-4c958766222b)
 
 To delete a note, type **magpie del \<line num>**:
 
-![image](https://github.com/bkager/Magpie/assets/68086185/a8618f62-675a-4d0a-83d2-6928905d7be2)
+![Screenshot showing the user type "magpie del 3". The note numbered 3 is removed.](https://github.com/bkager/Magpie/assets/68086185/a8618f62-675a-4d0a-83d2-6928905d7be2)
 
 You can also delete a range: **magpie del 3-5**
 
-![image](https://github.com/bkager/Magpie/assets/68086185/bbd8170d-ae57-4291-acca-df9df6dd2901)
+![Screenshot showing the user type "magpie del 2-6". The notes on those line numbers are removed.](https://github.com/bkager/Magpie/assets/68086185/bbd8170d-ae57-4291-acca-df9df6dd2901)
 
 "Deleted" notes aren't fully gone--they're moved to the bottom of the file as a comment. You can see all current and deleted notes by opening the notes file in a text editor or by typing **magpie all**: 
 
-![image](https://github.com/bkager/Magpie/assets/68086185/c13622f0-b502-4831-a82d-c2e11715b217)
+![Screenshot showing the user type "magpie all". The output of the command is the contents of the magpie text file. Active notes are at the top. Below them, a line reads "### Lines preceded with a # will not be printed ###". Below it, each line is numbered, followed by a #, followed by the text of previously deleted notes.](https://github.com/bkager/Magpie/assets/68086185/c13622f0-b502-4831-a82d-c2e11715b217)
 
 To get rid of all your old notes, open the file in a text editor. Or if you want to entirely clear your file of all current and deleted notes and start over, type **magpie clear**: 
 
-![image](https://github.com/bkager/Magpie/assets/68086185/b4366602-5be7-4930-a4fc-832928500665)
+![Screenshot showing the user type "magpie clear". A confirmation dialogue appears. When the user types "y" all notes are removed from the command prompt and the text file.](https://github.com/bkager/Magpie/assets/68086185/b4366602-5be7-4930-a4fc-832928500665)
 
 To see a quick summary of usage, including abbreviated forms of these commands, type **magpie help**. 
 
-![image](https://github.com/bkager/Magpie/assets/68086185/90ed2270-5086-4f45-9c1d-e6bdd009b696)
+![Screenshot showing a sample of the help output when a user types "magpie help".](https://github.com/bkager/Magpie/assets/68086185/90ed2270-5086-4f45-9c1d-e6bdd009b696)
 
