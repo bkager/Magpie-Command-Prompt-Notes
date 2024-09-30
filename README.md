@@ -53,7 +53,7 @@ Place the following lines in your shell's config file (`.zshrc`), adding the pat
 ```
 Add to end of PS1 value in `.zshrc` file: 
 ```
-  ${NEWLINE}`magpie`
+  ${NEWLINE}`magpie`${NEWLINE}
 ```
 
 Example `.zshrc` file: 
@@ -62,7 +62,7 @@ setopt PROMPT_SUBST
 
 NEWLINE=$'\n'
 
-PS1='%d (%D{%A, %B %e})${NEWLINE}`magpie`'
+PS1='%d (%D{%A, %B %e})${NEWLINE}`magpie`${NEWLINE}'
 
 alias magpie="/Users/myname/Desktop/magpie/magpie-notes-script.sh"
 ```
