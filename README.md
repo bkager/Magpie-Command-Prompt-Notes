@@ -30,7 +30,7 @@ Place the following line in your shell's config file (`.bashrc`). Replace `ABSOL
 ```
 Add to end of PS1 value in `.bashrc` file: 
 ```
-  "\n$(magpie)\n"
+  \n"$(magpie)"\n
 ```
 
 Example `.bashrc` file: 
