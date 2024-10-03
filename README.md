@@ -24,11 +24,11 @@ file='/Users/myname/Desktop/magpie-notes.txt'
 ## Setup 3: Configure Your Prompt
 
 ### Bash Setup
-Place the following line in your shell's config file (`.bashrc`). Replace `ABSOLUTE_PATH_TO_THE_SCRIPTFILE` with the path to your copy of `magpie-notes.sh`:
+Place the following line in your shell's config file (`.bashrc`), adding the path to your copy of `magpie-notes.sh`:
 ```
   alias magpie="ABSOLUTE_PATH_TO_THE_SCRIPTFILE"
 ```
-Add to end of PS1 value in `.bashrc` file: 
+Add to end of PS1 value in your `.bashrc` file: 
 ```
   \n"$(magpie)"\n
 ```
@@ -51,7 +51,7 @@ Place the following lines in your shell's config file (`.zshrc`), adding the pat
   NEWLINE=$'\n'
   alias magpie="ABSOLUTE_PATH_TO_THE_SCRIPTFILE"
 ```
-Add to end of PS1 value in `.zshrc` file: 
+Add to end of PS1 value in your `.zshrc` file: 
 ```
   ${NEWLINE}`magpie`${NEWLINE}
 ```
@@ -68,12 +68,12 @@ alias magpie="/Users/myname/Desktop/magpie/magpie-notes-script.sh"
 ```
 ## Setup 4: Permissions
 
-From the command line, type this to give the script permission to execute:
+From the command line, enter this command to give the script permission to execute:
 ```
 chmod +x \<PATH TO YOUR MAGPIE-NOTES.SH FILE>
 ```
 
-# Usage
+# Using Magpie
 
 To add a note, type `magpie add "Whatever you want to type"`:
 
